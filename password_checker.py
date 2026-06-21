@@ -1,15 +1,19 @@
 import re
 
+# Prompt the user to enter a password
 password = input("Enter a password: ")
 
+# Initialize password score
 score = 0
 
+# Check password requirements
 length_check = len(password) >= 8
 uppercase_check = bool(re.search(r"[A-Z]", password))
 lowercase_check = bool(re.search(r"[a-z]", password))
 number_check = bool(re.search(r"\d", password))
 special_check = bool(re.search(r"[^A-Za-z0-9]", password))
 
+# Add points for each requirement met
 if length_check:
     score += 1
 
@@ -25,6 +29,7 @@ if number_check:
 if special_check:
     score += 1
 
+# Display results for each password requirement
 print("\nPassword Analysis:")
 print(f"Length: {'Pass' if length_check else 'Fail'}")
 print(f"Uppercase: {'Pass' if uppercase_check else 'Fail'}")
@@ -32,6 +37,7 @@ print(f"Lowercase: {'Pass' if lowercase_check else 'Fail'}")
 print(f"Number: {'Pass' if number_check else 'Fail'}")
 print(f"Special Character: {'Pass' if special_check else 'Fail'}")
 
+# Determine overall password strength
 if score <= 2:
     print("\nPassword Strength: Weak")
 elif score <= 4:
